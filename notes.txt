@@ -1,0 +1,126 @@
+/*
+    Introduction:
+    What is Node.JS?
+    ----------------
+    Node.JS is a JavaScript runtime. It is used to run Javascript
+    outside of the browser. Node.JS applications can build server-side
+    CLI apps, Web API's, desktop applications using electron, and it is
+    popular in the IoT ecosystem. It can be used to build JavaScript programs
+    and deploy them on IoT boards. You can use other tools, but Node.JS is
+    free and open source. Since it runs JavaScript and JavaScript is an 
+    event-driven language, it makes it ideal to run IoT programs and 
+    serverless API's
+
+    2 Ways to Run JavaScript code using Node.JS
+    --------------------------------------------
+    Node.JS REPL: Read Eval Print Loop - useful for quick code evaluation and experimentation
+    Do this directly in the terminal by first entering node then writing javascript code
+    To exit, use ctrl+d
+    After exiting, you can input: code <filename>.js
+    to create a new JavaScript file. Execute file by using node <filename>.js
+
+    Creating a new Node.js project
+    --------------------------------
+    In terminal type in terminal for info: npm 
+    To initialize a project type in terminal: npm init
+    Follow initializating steps (add '-y' for default)
+    This creates a 'package.json' file. 
+    This contains 3 different properties: 
+    meta-information - name, version, description, repsitory etc.
+    dependencies - packages
+    scripts - allows you to define scripts 
+
+    Add these scripts (they are done all the time, make your life easier!)
+    "start": "node <location of main start file, typically index>.js",
+    "test": "jest",
+    "build": "tsc",
+    "lint": "eslint"
+
+    "start" will run your application
+    "build" kicks off the building of your applciation (not all apps need a build, but if you want to use 
+        typescript, this could be something you need to compile or optimize for shipping)
+    "test" runs a test for your project. Most often you invooke a test library executable file like "jest"
+    "lint" is used to find inconsistencies and possible errors in code and offers ways to correct it
+
+    To run these scripts, go in terminal and type: npm run <script name>
+    or click from NPM scripts in explorer (click on '...' at top to add if not there)
+
+    Adding/Removing dependencies
+    --------------------------------
+    Type in terminal: npm install <dependency name>
+    Type in terminal: npm install express
+    node_modules file will be created. This is where packages are stored. It is also immediately 
+    added to dependencies in package.json file
+
+    Good practice to always add a '.gitignore' file and add node_modules folder
+    You can use https://www.npmjs.com to find packages
+    You can install from private registries (useful for companies)
+    You can install directly from a git repsitory
+    You can install from your own file system
+
+    For testing: npm install --save-dev jest
+    This adds a "devDependencies" in package.json. This is used for developers
+    while the "dependencies" is used in production
+
+    To remove a package: npm uninstall <dependency name>
+
+    Lockfile
+    --------
+    After installing a dependency, a new package-lock.json file is created
+    This file is important because it ensures the same dependencies for all machines
+    Without the file, you can not use the npm CI command
+    npm CI is similar to npm install, but it's meant to run in an automated environment
+    such as your continuous integration. It makes a clean installation of your dependencies
+    based on the lock file and fails if there is any discrepencies between lock and package.json
+    file. This ensure that the file launched in production is the same as the one on your machine
+    The goal of this file is to 'lock' unwanted updates that can cause problems
+
+    Updating dependencies
+    ---------------------
+    Packages are always being updated, sometimes multiple times a day!
+    Sometimes, you'd like to update packages.
+    To check for updates: npm outdated
+    This command returns all outdated dependencies you have.
+    Yellow packages indicate packages available, but not in the 'allowed' version range specified in package.json
+    Red packages indicate packages in range of your package.json files
+    Use: npm update
+    To update all packages in red
+    To allow updating of yellow packages, you cannot use the npm command. You will
+    need to install latest version manually: npm install <dependency name>@latest
+    In dependencies, the versions are typically in the form: "^1.0.0"
+    Major version is left-most number. If a change in this, you can expect breaking
+    changes in code.
+    Minor version is the middle number. Features are added, code should still work, typically okay to install this update
+    Patch version is the right most numbner. A change to this means that it fixes something in the code that
+    should have worked. Definitely safe to accept this update.
+    The "^" means you allow minor and patch updates but forbid major updates
+    This can be changed to "~" to restrict to only patch updates. Can be useful for critical packages such as compiler in linter
+    If you don't want ANY version updates, remove and just leave version number i.e "1.0.0"
+    If you want to allow ALL updates, replace the major version with "*" i.e "*.0.0"
+    
+    After updates, run project to make sure EVERYTHING is working
+
+    Manage Vulnerabilities
+    ----------------------
+    Everytime you update or install a package, you get a log response after the installation
+    This tells you what version was installed and whether there are vulnerabilities. If you have high
+    vulnerabilities, you should typically try to update your packages
+    Use command: npm audit
+    To get information on the kinds of vulnerabilities, what packages are affected, and how to resolve
+    Use command: npm audit fix
+    To try and fix resolve issues by updating packages within the range of the allowed updates 
+    Sometimes, however it is not enough.
+    Use: npm audit fix --force
+    To allow possible breaking updates
+    Sometimes, even that is not enough. Then you need to decide if the remaining vulnerabilities are 
+    an issue for your project, the packages that are affected. If it only affects devDependencies 
+    than it should be safe.
+
+    File Systems
+    ------------
+    Common things done with files in Node.JS:
+    Reading in a configuration file, grabbing static assets from a web server, writing log files
+    to disk.
+    Two modules mostly used with files are 'fs' and 'path'
+    fs deals with interactions with file system
+*/

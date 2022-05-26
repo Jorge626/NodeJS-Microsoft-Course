@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-microsoft-course",
+  "version": "1.0.0",
+  "description": "First Node.JS Application",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "test": "jest",
+    "build": "tsc",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jorge626/NodeJS-Microsoft-Course.git"
+  },
+  "author": "Jorge Aranda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jorge626/NodeJS-Microsoft-Course/issues"
+  },
+  "homepage": "https://github.com/Jorge626/NodeJS-Microsoft-Course#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
